@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">.
+            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %msg%n}{FATAL=red blink,
+            ERROR=red, WARN=yellow bold, INFO=blue bold, DEBUG=black bold, TRACE=black}"/>
+        </Console>
+        <Routing name="Routing">
+            <Routes pattern="$${ctx:logFileName}">
+                <Route>
+                    <RollingFile name="RollingFile-${ctx:logFileName}" fileName="target/logs/${ctx:logFileName}.log"
+                                 filePattern="target/logs/%d{yyyy-MM-dd}/archived_%d{HH-mm}-${ctx:logFileName}.log">
+                        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg%n"/>
+                        <Policies>
+                            <OnStartupTriggeringPolicy/>
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="Routing"/>
+        </Root>
+    </Loggers>
+</Configuration>
