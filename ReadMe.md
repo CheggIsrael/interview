@@ -14,6 +14,6 @@ This project contains initial framework for interview
 - Node.js installation [link](https://nodejs.org/en/)
 - Appium installed by npm. [Use this guide](https://appium.io/docs/en/about-appium/getting-started/?lang=en)
 
-##HowTo
+## HowTo
 To connect to your local device, please update required variables in TestBase class.<br>
 You can add test in Interviewer class or create your own class for tests.<br>
